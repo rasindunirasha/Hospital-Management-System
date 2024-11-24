@@ -24,15 +24,14 @@ router.post('/', function (req, res) {
             return res.status(500).send('Internal server error.');
         }
 
-        // Check if the result exists and has data
+        // Check if result exists
         if (!result || result.length === 0) {
             return res.status(404).send('Token did not match.');
         }
 
-        var email = result[0].email; // Safely access the first result
+        var email = result[0].email; // Safe access to the result
         var email_status = "verified";
 
-        // Update the email status in the database
         db.updateverify(email, email_status, function (err, updateResult) {
             if (err) {
                 console.error('Database update error:', err);

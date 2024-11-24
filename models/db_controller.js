@@ -43,11 +43,17 @@ module.exports.getuserid = function (email, callback) {
     con.query(query, callback);
 };
 
-module.exports.matchtoken = function (id,token, callback) {
-    const query = "SELECT id FROM `verify` WHERE token = \''+token+'\'' and "+id;
-    con.query(query, callback);
-    console.log(query);
+module.exports.matchtoken = function (id, token, callback) {
+    var sql = "SELECT id FROM `verify` WHERE token = ? AND id = ?";
+    con.query(sql, [token, id], function (err, result) {
+        if (err) {
+            console.error("Database error:", err);
+            return callback(err, null);
+        }
+        callback(null, result);
+    });
 };
+
 
 module.exports.updateverify = function (email,email_status, callback) {
     const query = "update `users` set `email_status` = '"+email_status+"' WHERE `email` = '"+email_status+"'";
