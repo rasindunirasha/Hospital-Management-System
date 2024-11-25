@@ -15,6 +15,7 @@ var db =require('./models/db_controller');
 var signup = require('./controller/signup');
 var login = require('./controller/login');
 var verify = require('./controller/verify');
+var reset = require('./controller/reset_controller');
 
 var app = express();
 
@@ -33,5 +34,6 @@ server.listen(PORT, function () {
 
 app.use('/signup',signup);
 app.use('/login',login);
-app.use('/verify',verify)
+app.use('/verify',verify);
+app.use('/reset',reset);
 
