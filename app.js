@@ -16,7 +16,7 @@ var signup = require('./controller/signup');
 var login = require('./controller/login');
 var verify = require('./controller/verify');
 var reset = require('./controller/reset_controller');
-
+var doctors = require('./controller/doc_controller');
 var app = express();
 
 app.set('view engine','ejs');
@@ -36,4 +36,4 @@ app.use('/signup',signup);
 app.use('/login',login);
 app.use('/verify',verify);
 app.use('/reset',reset);
-
+app.use('/doctor',doctors);
