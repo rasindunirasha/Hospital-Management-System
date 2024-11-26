@@ -17,6 +17,7 @@ var login = require('./controller/login');
 var verify = require('./controller/verify');
 var reset = require('./controller/reset_controller');
 var doctors = require('./controller/doc_controller');
+var employee = require('./controller/employee');
 var app = express();
 
 app.set('view engine','ejs');

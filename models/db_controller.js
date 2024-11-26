@@ -73,3 +73,46 @@ module.exports.temp = function(id,email,token,callback){
     con.query(query,callback);
     console.log(query);
 }
+
+module.exports.add_doctor = function(first_name,last_name,email,dob,gender,address,phone,image,department,biography,callback){
+    var query = `insert into \`doctor\` (\`first_name\`,\`last_name\`,\`email\`,\`dob\`,\`gender\`,\`address\`,\`phone\`,\`image\`,\`department\`,\`biography\`,\`callback\`)values('${first_name}","${last_name}","${email}","${dob}","${gender}","${address}","${phone}","${image}","${department}","${biography}","${callback}")`;
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.getAllDoc = function(callback){
+    var query = "select * from doctor"
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.getDocbyId = function(id,callback){
+    var query = "select * from doctor where id = '"+id+"'"
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.editDoc = function(first_name,last_name,email,dob,gender,address,phone,image,department,biography,callback){
+    var query = `update  \`doctor\` set \`first_name\`='${first_name}",\`last_name\`="${last_name}",\`email\`="${email}",\`dob\`="${dob}",\`gender\`="${gender}",\`address\`="${address}",\`phone\`="${phone}",\`image\`="${image}",\`department\`="${department}",\`biography\`="${biography}",\`callback\`="${callback}"where id = "+id "`;
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.delectDoc = function(id,callback){
+    var query = `delete * from doctor where id = '${id}'`
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.searchDoc = function(id,callback){
+    var query = `select * from  where first_name like "%' +key+'%'"` 
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.getalldept = function(id,callback){
+    var query = "select * from departments "; 
+    con.query(query,callback);
+    console.log(query);
+}
+
