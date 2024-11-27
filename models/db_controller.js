@@ -116,3 +116,64 @@ module.exports.getalldept = function(id,callback){
     console.log(query);
 }
 
+module.exports.getleavebyid=function(id,callback){
+    var query = "select *from leaves where id ="+id;
+    con.query(query,callback)
+
+}
+
+module.exports.getAllleave=function(callback){
+    var query = "select *from leaves ";
+    con.query(query,callback)
+
+}
+
+module.exports.add_leave = function(name,id,type,from,to,reason,callback){
+    var query ="INSERT into `leaves` (`employee`,`emp_id`,`leave_type`,`date_from`,`date_to`,`reason`) values('"+name+"','"+id+"','"+type+"','"+from+"','"+to+"','"+reason+"',)"
+    console.log(query)
+    con.query(query,callback);
+}
+
+module.exports.deleteleave = function(id,callback){
+    var query = `delete from leaves where id = ${id}`;
+    con.query(query,callback)
+}
+
+
+module.exports.getAllemployee=function(callback){
+    var query = "select *from employee ";
+    con.query(query,callback)
+}
+
+module.exports.add_employee = function(name,email,contact,join_date,role,salary,callback){
+    var query ="INSERT into `employee` (`name`,`email`,`contact`,`join_date`,`role`,`salary`,`callback`) values('"+name+"','"+email+"','"+contact+"','"+join_date+"','"+role+"','"+salary+"',)"
+    console.log(query)
+    con.query(query,callback);
+}
+
+module.exports.searchEmp = function(id,callback){
+    var query = `select * from  employee where name like "%' +key+'%'"` ;
+    con.query(query,callback);
+    console.log(query);
+}
+
+module.exports.deleteEmp= function(id,callback){
+    var query = "delete from emloyee where id = "+id;
+    console.log(query);
+}
+
+
+module.exports.editEmp=function(id,name,email,contact,join_date,role,callback){
+    var query = "update `employee` set `name` = '"+name+"',`email`='"+email+"',`contact`='"+contact+"',`join_date`='"+join_date+"',`role`='"+role+"'where id = '+id";
+    con.query(query,callback);
+}    
+
+module.exports.getEmpbyId= function(id,callback){
+    var query = "select* from emloyee where id = "+id;
+    console.log(query);
+}
+
+module.exports.edit_leave=function(id,name,leave_type,from,to,reason,callback){
+    var query = "update `employee` set `name` = '"+name+"',`leave_type`='"+leave_type+"',`date_from`='"+from+"',`date_to`='"+to+"',`reason`='"+reason+"'where id = '+id";
+    con.query(query,callback);
+} 
